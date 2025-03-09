@@ -29,19 +29,20 @@ All management tasks:
 bb tasks
 The following tasks are available:
 
-deps            Install all deps
-fmt-check       Check code formatting
-fmt             Fix code formatting
-lint-init       Import linting configs
-lint            Linting project's code
-test            Run tests
-outdated-check  Check outdated Clojure deps versions
-outdated        Upgrade outdated Clojure deps versions
-check           Run all code checks and tests
-install         Install version locally
-deploy-snapshot Deploy snapshot version to Clojars
-deploy-release  Deploy release version to Clojars
-release         Create and push git tag for release
+deps             Install all deps
+fmt-check        Check code formatting
+fmt              Fix code formatting
+lint-init        Import linting configs
+lint             Linting project's code
+test             Run tests
+outdated-check   Check outdated Clojure deps versions
+outdated         Upgrade outdated Clojure deps versions
+check            Run all code checks and tests
+install-snapshot Install snapshot version locally
+install          Install version locally
+deploy-snapshot  Deploy snapshot version to Clojars
+deploy-release   Deploy release version to Clojars
+release          Create and push git tag for release
 ```
 
 ## Build and publish
