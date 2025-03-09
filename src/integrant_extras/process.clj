@@ -8,8 +8,7 @@
   [_ params]
   (ig-extras/validate-schema!
     {:component ::process
-     :data {:cmd ["bb" "css-watch"]
-            :opts {:err :inherit}}
+     :data params
      :schema [:map
               [:cmd [:vector {:min 1} string?]]
               [:opts
