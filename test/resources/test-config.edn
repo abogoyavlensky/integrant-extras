@@ -1,0 +1,6 @@
+{:test-key "test-value"
+ :test/nested {:key "value"}
+ :profile-specific #profile {:test {:only-in-test true}
+                             :dev {:only-in-dev true}}
+ :ref-value #ig/ref :test/nested
+ :port #free-port {}}

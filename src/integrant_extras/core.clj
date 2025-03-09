@@ -11,7 +11,7 @@
 
 ; Config
 
-(def ^:const SYSTEM-CONFIG-PATH-DEFAULT "config.edn")
+(def SYSTEM-CONFIG-PATH-DEFAULT "config.edn")
 
 ; Add #ig/ref tag for reading integrant config from aero.
 (defmethod aero/reader 'ig/ref

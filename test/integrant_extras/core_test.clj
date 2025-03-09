@@ -2,6 +2,21 @@
   (:require [clojure.test :refer :all]
             [integrant-extras.core :as core]))
 
+(deftest test-get-config
+  (testing "Should load config with test profile"
+    (let [config (core/get-config :test "test-config.edn")]
+      (is (= "test-value" (:test-key config)))
+      (is (= {:key "value"} (:test/nested config)))
+      (is (true? (get-in config [:profile-specific :only-in-test])))
+      (is (nil? (get-in config [:profile-specific :only-in-dev])))
+      (is (= :test/nested (:key (:ref-value config))))
+      (is (number? (:port config)))))
+
+  (testing "Should use default config path when not specified"
+    (with-redefs [core/SYSTEM-CONFIG-PATH-DEFAULT "test-config.edn"]
+      (let [config (core/get-config :test)]
+        (is (= "test-value" (:test-key config)))))))
+
 (deftest test-validate-schema!
   (testing "Should throw exception when data doesn't match schema"
     (let [component "test-component"
