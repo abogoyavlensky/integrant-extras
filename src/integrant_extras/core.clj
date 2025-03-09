@@ -33,6 +33,15 @@
        (aero/read-config {:profile profile
                           :resolver aero/resource-resolver}))))
 
+(defn read-config
+  "Read config file, load namespaces for Integrant component and return config map."
+  ([profile]
+   (read-config profile nil))
+  ([profile config-path]
+   (let [config (get-config profile config-path)]
+     (ig/load-namespaces config)
+     config)))
+
 (defn validate-schema!
   "Validate data against schema and throw a humanized error if data is not valid."
   [{:keys [component schema data]}]
@@ -59,10 +68,8 @@
 (defn run-system
   "Run application system."
   [{:keys [profile config-path]}]
-  (let [config (get-config profile config-path)]
-    (log/info "[SYSTEM] System is starting with profile:" profile)
-    (ig/load-namespaces config)
-    (-> config
-        (ig/init)
-        (at-shutdown))
-    (log/info "[SYSTEM] System has been started successfully.")))
+  (log/info "[SYSTEM] System is starting with profile:" profile)
+  (-> (read-config profile config-path)
+      (ig/init)
+      (at-shutdown))
+  (log/info "[SYSTEM] System has been started successfully."))

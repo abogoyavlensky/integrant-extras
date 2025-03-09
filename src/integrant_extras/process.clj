@@ -8,9 +8,19 @@
   [_ params]
   (ig-extras/validate-schema!
     {:component ::process
-     :data params
+     :data {:cmd ["bb" "css-watch"]
+            :opts {:err :inherit}}
      :schema [:map
-              [:cmd [:vector {:min 1} string?]]]}))
+              [:cmd [:vector {:min 1} string?]]
+              [:opts
+               {:optional true}
+               [:map
+                [:in {:optional true} [:enum :pipe :inherit]]
+                [:out {:optional true} [:enum :pipe :inherit :discard]]
+                [:err {:optional true} [:enum :pipe :inherit :discard :stdout]]
+                [:dir {:optional true} string?]
+                [:clear-env {:optional true} boolean?]
+                [:env {:optional true} [:map [:string string?]]]]]]}))
 
 (defmethod ig/init-key ::process
   [_ options]
