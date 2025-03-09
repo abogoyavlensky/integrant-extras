@@ -8,7 +8,12 @@ Additional utilities for Integrant system and config.
 
 ## Overview
 
-*TODO: Add library detailed overview*
+The library provides additional utilities and helpers for working with [Integrant](https://github.com/weavejester/integrant), a popular Clojure dependency injection and configuration system. Key features include:
+
+- Enhanced configuration management
+- Utility functions for common Integrant operations
+- Helper macros for cleaner system definitions
+
 
 ## Development
 
