@@ -1,6 +1,6 @@
 (ns integrant-extras.tests
-  (:require [integrant.core :as ig]
-            [integrant-extras.core :as ig-extras]))
+  (:require [integrant-extras.core :as ig-extras]
+            [integrant.core :as ig]))
 
 (def ^:dynamic *test-system* nil)
 
